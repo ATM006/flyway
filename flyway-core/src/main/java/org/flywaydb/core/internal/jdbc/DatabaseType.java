@@ -42,6 +42,7 @@ public enum DatabaseType {
     MARIADB("MariaDB", Types.VARCHAR, true),
     MYSQL("MySQL", Types.VARCHAR, true),
     ORACLE("Oracle", Types.VARCHAR, true),
+    DAMENG("DaMeng", Types.NULL, true),
     POSTGRESQL("PostgreSQL", Types.NULL, true),
     REDSHIFT("Redshift", Types.VARCHAR, true),
     SQLITE("SQLite", Types.VARCHAR, false),
@@ -106,6 +107,9 @@ public enum DatabaseType {
         }
         if (databaseProductName.startsWith("Oracle")) {
             return ORACLE;
+        }
+        if (databaseProductName.startsWith("DM")) {
+            return DAMENG;
         }
         if (databaseProductName.startsWith("PostgreSQL")) {
             String selectVersionQueryOutput = getSelectVersionOutput(connection);

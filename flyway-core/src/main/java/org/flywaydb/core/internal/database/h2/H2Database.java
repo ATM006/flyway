@@ -50,6 +50,7 @@ public class H2Database extends Database<H2Connection> {
         MSSQLServer,
         MySQL,
         Oracle,
+        DaMeng,
         PostgreSQL,
         Ignite
     }

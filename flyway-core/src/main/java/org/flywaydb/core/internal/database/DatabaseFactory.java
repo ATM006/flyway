@@ -24,6 +24,8 @@ import org.flywaydb.core.internal.database.base.Database;
 import org.flywaydb.core.internal.database.cockroachdb.CockroachDBDatabase;
 import org.flywaydb.core.internal.database.cockroachdb.CockroachDBParser;
 import org.flywaydb.core.internal.database.cockroachdb.CockroachDBRetryingStrategy;
+import org.flywaydb.core.internal.database.dameng.DmDatabase;
+import org.flywaydb.core.internal.database.dameng.DmParser;
 import org.flywaydb.core.internal.database.db2.DB2Database;
 import org.flywaydb.core.internal.database.db2.DB2Parser;
 import org.flywaydb.core.internal.database.derby.DerbyDatabase;
@@ -187,6 +189,12 @@ public class DatabaseFactory {
 
 
                 );
+            case DAMENG:
+                return new DmDatabase(configuration, jdbcConnectionFactory
+
+
+
+                );
             case POSTGRESQL:
                 return new PostgreSQLDatabase(configuration, jdbcConnectionFactory
 
@@ -314,6 +322,8 @@ public class DatabaseFactory {
 
                         , parsingContext
                 );
+            case DAMENG:
+                return new DmParser(configuration, parsingContext);
             case POSTGRESQL:
                 return new PostgreSQLParser(configuration, parsingContext);
             case REDSHIFT:
